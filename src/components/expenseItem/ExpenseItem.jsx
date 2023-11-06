@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import styles from "./ExpenseItem.module.css";
-const ExpenseItem = () => {
+const ExpenseItem = ({ expenseLocation }) => {
   const expenseDate = new Date();
   const expenseTitle = "Car Insurance";
   const expenseAmount = 294.67;
-  const locationOfExpenditure = "Hyderabad";
   return (
     <div className={styles.container}>
       <div>
@@ -19,7 +17,7 @@ const ExpenseItem = () => {
         <p className="text_small">$ {expenseAmount}</p>
       </div>
       <div>
-        <p className="text_small">{locationOfExpenditure}</p>
+        <p className="text_small">{expenseLocation}</p>
       </div>
     </div>
   );
