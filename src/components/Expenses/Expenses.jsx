@@ -34,6 +34,11 @@ const Expenses = ({
           handleDelete={handleDelete}
         />
       ))}
+      {expenses?.length === 1 && (
+        <p className="text_small">
+          The list has only one expense, please add some more...
+        </p>
+      )}
     </div>
   );
 };
