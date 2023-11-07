@@ -1,38 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./ExpenseForm.module.css";
 
 const ExpenseForm = () => {
+  const [expenseFormdata, setExpenseFormData] = useState({
+    expenseTitle: "",
+    expenseAmount: "",
+    expenseDate: "",
+  });
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(value);
+    setExpenseFormData((prevState) => ({ ...prevState, [name]: value }));
   };
+
+  console.log(expenseFormdata);
   return (
     <form className={styles.expense_form}>
-      <label htmlFor="expense_title" className="text_small">
+      <label htmlFor="expenseTitle" className="text_small">
         Expense Title
       </label>
       <input
         type="text"
         className="input_medium"
-        name="expense_title"
+        name="expenseTitle"
         onChange={handleChange}
       />
-      <label htmlFor="expense_amount" className="text_small">
+      <label htmlFor="expenseAmount" className="text_small">
         Expense Amount
       </label>
       <input
         type="number"
         className="input_medium"
-        name="expense_amount"
+        name="expenseAmount"
         onChange={handleChange}
       />
-      <label htmlFor="expense_date" className="text_small">
+      <label htmlFor="expenseDate" className="text_small">
         Expense Date
       </label>
       <input
         type="date"
         className="input_medium"
-        name="expense_date"
+        name="expenseDate"
         onChange={handleChange}
       />
     </form>
