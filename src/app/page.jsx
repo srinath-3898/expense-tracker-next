@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import ExpenseItem from "@/components/expenseItem/ExpenseItem";
 import { useEffect, useState } from "react";
+import ExpenseForm from "@/components/expenseForm/ExpenseForm";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <div>
+      <ExpenseForm />
       {items.map((item, i) => (
         <ExpenseItem
           key={item}
