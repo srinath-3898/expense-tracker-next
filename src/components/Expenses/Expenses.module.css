@@ -1,4 +1,22 @@
 .container {
   display: grid;
   gap: 20px;
+  width: 80%;
+  margin: auto;
+}
+
+.expenses_header {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
+  background-color: gray;
+  padding: 10px;
+  color: white;
+}
+
+.input_controller {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 20px;
 }

@@ -7,12 +7,12 @@ import Expenses from "@/components/Expenses/Expenses";
 
 export default function Home() {
   const [expenses, setExpenses] = useState([]);
-
   const [expenseFormdata, setExpenseFormData] = useState({
     expenseTitle: "Car Insurance",
     expenseAmount: "267.99",
-    expenseDate: "1998-03-08",
+    expenseDate: "2023-03-08",
   });
+  const [selectedYear, setSelectedYear] = useState("2023");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,6 +40,8 @@ export default function Home() {
         expenses={expenses}
         expenseFormdata={expenseFormdata}
         handleDelete={handleDelete}
+        selectedYear={selectedYear}
+        setSelectedYear={setSelectedYear}
       />
     </div>
   );
