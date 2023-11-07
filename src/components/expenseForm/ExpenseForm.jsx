@@ -7,14 +7,19 @@ const ExpenseForm = () => {
     expenseAmount: "",
     expenseDate: "",
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setExpenseFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  console.log(expenseFormdata);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(expenseFormdata);
+  };
+
   return (
-    <form className={styles.expense_form}>
+    <form className={styles.expense_form} onSubmit={handleSubmit}>
       <label htmlFor="expenseTitle" className="text_small">
         Expense Title
       </label>
@@ -42,6 +47,9 @@ const ExpenseForm = () => {
         name="expenseDate"
         onChange={handleChange}
       />
+      <button type="submit" className="btn_small btn_primary">
+        Add expense
+      </button>
     </form>
   );
 };
