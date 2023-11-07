@@ -1,7 +1,19 @@
+.container {
+  width: 70%;
+  margin: auto;
+  display: grid;
+  gap: 20px;
+}
 .expense_form {
   display: grid;
-  place-items: center;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 20px;
+}
+
+.add_expense_button {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .input_controller {

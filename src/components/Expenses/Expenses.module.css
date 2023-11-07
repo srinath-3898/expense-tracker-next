@@ -1,17 +1,11 @@
 .container {
   display: grid;
-  gap: 20px;
+  gap: 10px;
   width: 80%;
   margin: auto;
-}
-
-.expenses_header {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  place-items: center;
-  background-color: gray;
+  border: 1px solid #e7e7e7;
   padding: 10px;
-  color: white;
+  border-radius: 10px;
 }
 
 .input_controller {

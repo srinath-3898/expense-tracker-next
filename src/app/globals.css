@@ -43,7 +43,7 @@ a {
 button {
   border: none;
   border-radius: 3px;
-  padding: 9px;
+  padding: 6px 10px;
   font-size: 1.3rem;
 }
 
@@ -67,6 +67,11 @@ button:focus-visible {
 
 .btn_secondary {
   background-color: #747474;
+  color: #ffffff;
+}
+
+.btn_danger {
+  background-color: red;
   color: #ffffff;
 }
 
