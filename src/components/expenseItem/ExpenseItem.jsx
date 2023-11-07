@@ -7,7 +7,7 @@ import styles from "./ExpenseItem.module.css";
 const ExpenseItem = ({ expenseLocation, handleDelete, index }) => {
   const expenseDate = new Date().toLocaleDateString();
   const [expenseTitle, setExpenseTitle] = useState("Car Insurance");
-  const expenseAmount = 294.67;
+  const [expenseAmount, setExpenseAmount] = useState(index);
   return (
     <div className={styles.container}>
       <ExpenseDate expenseDate={expenseDate} />
@@ -19,6 +19,7 @@ const ExpenseItem = ({ expenseLocation, handleDelete, index }) => {
       <button onClick={() => setExpenseTitle("bike insurance")}>
         Change Title
       </button>
+      <button onClick={() => setExpenseAmount(100)}>Change Price</button>
       <button onClick={() => handleDelete(index)}>Delete</button>
     </div>
   );

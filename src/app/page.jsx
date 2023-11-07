@@ -8,7 +8,7 @@ export default function Home() {
   const [items, setItems] = useState([]);
   const handleDelete = (index) => {
     console.log(items);
-    const updatedItems = items.filter((item) => item !== index);
+    const updatedItems = items.filter((item, i) => i !== index);
     setItems(updatedItems);
   };
   useEffect(() => {
