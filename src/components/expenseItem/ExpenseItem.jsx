@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import ExpenseDate from "../expenseDate/ExpenseDate";
 import ExpenseDetails from "../expenseDetails/ExpenseDetails";
 import styles from "./ExpenseItem.module.css";
-const ExpenseItem = ({ expenseLocation }) => {
-  const expenseDate = new Date();
-  const expenseTitle = "Car Insurance";
+const ExpenseItem = ({ expenseLocation, handleDelete, index }) => {
+  const expenseDate = new Date().toLocaleDateString();
+  const [expenseTitle, setExpenseTitle] = useState("Car Insurance");
   const expenseAmount = 294.67;
   return (
     <div className={styles.container}>
@@ -15,6 +16,10 @@ const ExpenseItem = ({ expenseLocation }) => {
         expenseAmount={expenseAmount}
         expenseLocation={expenseLocation}
       />
+      <button onClick={() => setExpenseTitle("bike insurance")}>
+        Change Title
+      </button>
+      <button onClick={() => handleDelete(index)}>Delete</button>
     </div>
   );
 };
