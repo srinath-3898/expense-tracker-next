@@ -12,6 +12,7 @@ export default function Home() {
     expenseAmount: "267.99",
     expenseDate: "2023-03-08",
   });
+  const [showExpenseForm, setShowExpenseForm] = useState(false);
   const [selectedYear, setSelectedYear] = useState("");
 
   const handleChange = (event) => {
@@ -46,11 +47,23 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <ExpenseForm
-        expenseFormData={expenseFormdata}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
-      />
+      {showExpenseForm ? (
+        <ExpenseForm
+          expenseFormData={expenseFormdata}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          setShowExpenseForm={setShowExpenseForm}
+        />
+      ) : (
+        <div className={styles.add_expense_button}>
+          <button
+            className="btn_primary btn_extra_large"
+            onClick={() => setShowExpenseForm(true)}
+          >
+            Add Expense
+          </button>
+        </div>
+      )}
       <Expenses
         expenses={filteredExpenses}
         expenseFormdata={expenseFormdata}

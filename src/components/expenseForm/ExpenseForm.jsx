@@ -1,6 +1,11 @@
 import styles from "./ExpenseForm.module.css";
 
-const ExpenseForm = ({ expenseFormData, handleChange, handleSubmit }) => {
+const ExpenseForm = ({
+  expenseFormData,
+  handleChange,
+  handleSubmit,
+  setShowExpenseForm,
+}) => {
   return (
     <div className={styles.container}>
       <h1>Expense Form</h1>
@@ -45,7 +50,14 @@ const ExpenseForm = ({ expenseFormData, handleChange, handleSubmit }) => {
         </div>
         <div></div>
         <div></div>
-        <div className={styles.add_expense_button}>
+        <div className={styles.btns}>
+          <button
+            className="btn_secondary btn_medium"
+            onClick={() => setShowExpenseForm(false)}
+          >
+            Cancel
+          </button>
+
           <button type="submit" className="btn_medium btn_primary">
             Add expense
           </button>

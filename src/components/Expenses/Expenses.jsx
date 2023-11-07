@@ -24,16 +24,22 @@ const Expenses = ({
           <option value="2019">2019</option>
         </select>
       </div>
-      {expenses.map((item, index) => (
-        <ExpenseItem
-          key={index}
-          index={index}
-          expenseTitle={item.expenseTitle}
-          expenseAmount={item.expenseAmount}
-          expenseDate={item.expenseDate}
-          handleDelete={handleDelete}
-        />
-      ))}
+      {expenses?.length > 0 ? (
+        expenses.map((item, index) => (
+          <ExpenseItem
+            key={index}
+            index={index}
+            expenseTitle={item.expenseTitle}
+            expenseAmount={item.expenseAmount}
+            expenseDate={item.expenseDate}
+            handleDelete={handleDelete}
+          />
+        ))
+      ) : (
+        <p className="text_small bold">
+          There are no expenses in the list, please add expenses to view...
+        </p>
+      )}
       {expenses?.length === 1 && (
         <p className="text_small">
           The list has only one expense, please add some more...
