@@ -1,4 +1,11 @@
 .expense_form {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  place-items: center;
+  gap: 20px;
+}
+
+.input_controller {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
 }
