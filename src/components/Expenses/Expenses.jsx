@@ -16,6 +16,7 @@ const Expenses = ({
           value={selectedYear}
           onChange={(event) => setSelectedYear(event.target.value)}
         >
+          <option value="">Please select</option>
           <option value="2023">2023</option>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
@@ -27,9 +28,9 @@ const Expenses = ({
         <ExpenseItem
           key={index}
           index={index}
-          expenseTitle={expenseFormdata.expenseTitle}
-          expenseAmount={expenseFormdata.expenseAmount}
-          expenseDate={expenseFormdata.expenseDate}
+          expenseTitle={item.expenseTitle}
+          expenseAmount={item.expenseAmount}
+          expenseDate={item.expenseDate}
           handleDelete={handleDelete}
         />
       ))}

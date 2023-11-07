@@ -1,18 +1,18 @@
 "use client";
-import Image from "next/image";
 import styles from "./page.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExpenseForm from "@/components/ExpenseForm/ExpenseForm";
 import Expenses from "@/components/Expenses/Expenses";
 
 export default function Home() {
   const [expenses, setExpenses] = useState([]);
+  const [filteredExpenses, setFilteredExpenses] = useState([]);
   const [expenseFormdata, setExpenseFormData] = useState({
     expenseTitle: "Car Insurance",
     expenseAmount: "267.99",
     expenseDate: "2023-03-08",
   });
-  const [selectedYear, setSelectedYear] = useState("2023");
+  const [selectedYear, setSelectedYear] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,13 +21,28 @@ export default function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setExpenses((prevState) => [...prevState, expenseFormdata]);
+    setExpenses((prevState) => [...prevState, { ...expenseFormdata }]);
   };
 
   const handleDelete = (index) => {
     const updatedExpenses = expenses.filter((item, i) => i !== index);
     setExpenses(updatedExpenses);
   };
+
+  useEffect(() => {
+    setFilteredExpenses(expenses);
+  }, [expenses]);
+
+  useEffect(() => {
+    if (selectedYear) {
+      const filteredExpenses = expenses.filter(
+        (expense) => selectedYear === expense.expenseDate.split("-")[0]
+      );
+      setFilteredExpenses(filteredExpenses);
+    } else {
+      setFilteredExpenses(expenses);
+    }
+  }, [selectedYear, expenses]);
 
   return (
     <div className={styles.container}>
@@ -37,7 +52,7 @@ export default function Home() {
         handleSubmit={handleSubmit}
       />
       <Expenses
-        expenses={expenses}
+        expenses={filteredExpenses}
         expenseFormdata={expenseFormdata}
         handleDelete={handleDelete}
         selectedYear={selectedYear}
