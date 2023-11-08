@@ -1,0 +1,6 @@
+.chart {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  height: 15rem;
+  padding: 1rem;
+}

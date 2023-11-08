@@ -1,0 +1,19 @@
+.chart_bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.inner {
+  height: 100%;
+  width: 15px;
+  border: 1px solid #e7e7e7;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.fill {
+  width: 100%;
+  background-color: #ff5900;
+}

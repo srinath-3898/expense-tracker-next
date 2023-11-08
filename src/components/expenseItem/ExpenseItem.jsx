@@ -1,18 +1,17 @@
 "use client";
 
+import ExpenseDate from "../ExpenseDate/ExpenseDate";
 import styles from "./ExpenseItem.module.css";
 const ExpenseItem = ({
   index,
+  expenseDate,
   expenseTitle,
   expenseAmount,
-  expenseDate,
   handleDelete,
 }) => {
   return (
     <div className={styles.container}>
-      <div>
-        <p>{new Date(expenseDate).toDateString()}</p>
-      </div>
+      <ExpenseDate expenseDate={expenseDate} />
       <p className="text_small">{expenseTitle}</p>
       <p className="text_small">${expenseAmount}</p>
       <button

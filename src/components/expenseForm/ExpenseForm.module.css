@@ -1,12 +1,15 @@
 .container {
-  width: 70%;
+  width: max-content;
   margin: auto;
   display: grid;
   gap: 20px;
+  background-color: #e7e7e7;
+  padding: 20px;
+  border-radius: 10px;
 }
 .expense_form {
   display: grid;
-  grid-template-columns: repeat(2, 2fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 20px;
 }
@@ -18,7 +21,7 @@
 
 .input_controller {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 0.5fr 1fr;
   align-items: center;
 }
 

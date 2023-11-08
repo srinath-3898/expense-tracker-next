@@ -5,13 +5,24 @@ import ExpenseForm from "@/components/ExpenseForm/ExpenseForm";
 import Expenses from "@/components/Expenses/Expenses";
 
 export default function Home() {
-  const [expenses, setExpenses] = useState([]);
-  const [filteredExpenses, setFilteredExpenses] = useState([]);
+  const dummyExpenses = [
+    { expenseTitle: "Movie", expenseAmount: 200, expenseDate: "01-02-2022" },
+    { expenseTitle: "Books", expenseAmount: 100, expenseDate: "08-22-2023" },
+    {
+      expenseTitle: "Grocery",
+      expenseAmount: 500,
+      expenseDate: "08-25-2023",
+    },
+    { expenseTitle: "Fuel", expenseAmount: 800, expenseDate: "08-25-2023" },
+    { expenseTitle: "Food", expenseAmount: 150, expenseDate: "09-01-2023" },
+  ];
+  const [expenses, setExpenses] = useState(dummyExpenses);
   const [expenseFormdata, setExpenseFormData] = useState({
-    expenseTitle: "Car Insurance",
-    expenseAmount: "267.99",
-    expenseDate: "2023-03-08",
+    expenseTitle: "",
+    expenseAmount: "",
+    expenseDate: "",
   });
+
   const [showExpenseForm, setShowExpenseForm] = useState(false);
   const [selectedYear, setSelectedYear] = useState("");
 
@@ -29,21 +40,6 @@ export default function Home() {
     const updatedExpenses = expenses.filter((item, i) => i !== index);
     setExpenses(updatedExpenses);
   };
-
-  useEffect(() => {
-    setFilteredExpenses(expenses);
-  }, [expenses]);
-
-  useEffect(() => {
-    if (selectedYear) {
-      const filteredExpenses = expenses.filter(
-        (expense) => selectedYear === expense.expenseDate.split("-")[0]
-      );
-      setFilteredExpenses(filteredExpenses);
-    } else {
-      setFilteredExpenses(expenses);
-    }
-  }, [selectedYear, expenses]);
 
   return (
     <div className={styles.container}>
@@ -65,8 +61,7 @@ export default function Home() {
         </div>
       )}
       <Expenses
-        expenses={filteredExpenses}
-        expenseFormdata={expenseFormdata}
+        expenses={expenses}
         handleDelete={handleDelete}
         selectedYear={selectedYear}
         setSelectedYear={setSelectedYear}

@@ -1,18 +1,25 @@
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
+import ExpensesChart from "../ExpensesChart/ExpensesChart";
 import styles from "./Expenses.module.css";
 
 const Expenses = ({
   expenses,
-  expenseFormdata,
   handleDelete,
   selectedYear,
   setSelectedYear,
 }) => {
+  const filteredExpenses = selectedYear
+    ? expenses.filter(
+        (expense) =>
+          parseInt(selectedYear) === new Date(expense.expenseDate).getFullYear()
+      )
+    : expenses;
   return (
     <div className={styles.container}>
       <div className={styles.input_controller}>
         <p className="text_medium bold">Filter by year</p>
         <select
+          className="input_large"
           value={selectedYear}
           onChange={(event) => setSelectedYear(event.target.value)}
         >
@@ -24,24 +31,24 @@ const Expenses = ({
           <option value="2019">2019</option>
         </select>
       </div>
-      {expenses?.length > 0 ? (
-        expenses.map((item, index) => (
+      <ExpensesChart filteredExpenses={filteredExpenses} />
+
+      {filteredExpenses?.length > 0 ? (
+        filteredExpenses.map((item, index) => (
           <ExpenseItem
             key={index}
             index={index}
+            expenseDate={item.expenseDate}
             expenseTitle={item.expenseTitle}
             expenseAmount={item.expenseAmount}
-            expenseDate={item.expenseDate}
             handleDelete={handleDelete}
           />
         ))
       ) : (
-        <p className="text_small bold">
-          There are no expenses in the list, please add expenses to view...
-        </p>
+        <p className="text_extra_large bold center">Found No Expenses</p>
       )}
-      {expenses?.length === 1 && (
-        <p className="text_small">
+      {filteredExpenses?.length === 1 && (
+        <p className="text_small center">
           The list has only one expense, please add some more...
         </p>
       )}
